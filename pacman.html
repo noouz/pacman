@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Game</title>
+</head>
+<body>
+    <div class="container">
+        <div class="ball-container">
+            <div class="ball-head">
+                <div class="head head1"></div>
+                <div class="head head2"></div>
+            </div>
+
+            <div class="dot-list">
+                <div class="dot dot-1"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <ul class="bottom-list">
+            <li class="bottom" id="bottom-1">
+                <span class="material-symbols-outlined">fast_rewind</span>
+            </li>
+            <li class="bottom" id="bottom-2">
+                <span class="material-symbols-outlined">pause</span>
+            </li>
+            <li class="bottom" id="bottom-3">
+                <span class="material-symbols-outlined">fast_forward</span>
+            </li>
+
+            
+            <div class="colors">
+                <div class="color-ball red"></div>
+                <div class="color-ball blue"></div>
+                <div class="color-ball green"></div>
+            </div>
+            
+        </ul>
+
+        
+
+    </div>
+
+    
+
+    <script>
+        const ball = document.querySelector('.ball-container');
+        const head = document.querySelectorAll('.head');
+        
+        const red = document.querySelector('.red');
+        const blue = document.querySelector('.blue');
+        const green = document.querySelector('.green');
+        
+        const slow = document.querySelector('#bottom-1');
+        const pause = document.querySelector('#bottom-2');
+        const fast = document.querySelector('#bottom-3');
+        const dots = document.querySelector('.dot-list');
+        const dot1 = document.querySelector('.dot-1');
+
+        red.addEventListener('click',function(){
+            head.forEach(e =>{
+                e.classList.remove('green','blue');
+                e.classList.toggle('red');
+            })
+        })
+        blue.addEventListener('click',function(){
+            head.forEach(e =>{
+                e.classList.remove('red','green');
+                e.classList.toggle('blue');
+            })
+        })
+        green.addEventListener('click',function(){
+            head.forEach(e =>{
+                e.classList.remove('red','blue');
+                e.classList.toggle('green');
+            })
+        })
+
+        slow.addEventListener('click',function(){
+            ball.className = 'ball-container';
+            dots.className = 'dot-list';
+            dot1.className = 'dot dot-1';
+
+            ball.classList.add('sppedMinus');
+        })
+
+        pause.addEventListener('click',function(){
+            ball.classList.toggle('pause');
+            dots.classList.toggle('pause');
+            dot1.classList.toggle('pause');
+        })
+
+        fast.addEventListener('click',function(){
+            ball.className = 'ball-container';
+            dots.className = 'dot-list';
+            dot1.className = 'dot dot-1';
+
+            ball.classList.add('sppedPlus');
+        })
+
+
+
+    </script>
+</body>
+</html>
